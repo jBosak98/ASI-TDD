@@ -1,0 +1,340 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement('link');
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName('head')[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				</section><section  data-markdown ><script type="text/template">
+					# TEST DRIVEN DEVELOPMENT
+					Jakub Bosak
+				</script></section>
+				</section><section  data-markdown ><script type="text/template">
+					## UNIT TESTS
+					* help you really understand the design of the code you are working on
+					* give you instant visual feedback
+					* can help document and define what something is supposed to do
+					* help with code re-use
+				</script></section>
+<!-- 				</section><section  data-markdown ><script type="text/template">
+					## WHAT SHOULD BE TESTED
+					*	conditional instructions
+					*	loops
+					*	operations
+					*	polymorphism
+
+				</script></section>
+				</section><section  data-markdown ><script type="text/template">
+					## WHAT SHOULD NOT BE TESTED
+
+				</script></section> -->
+<!-- 				</section><section  data-markdown ><script type="text/template">
+					> "Imperfect tests, run frequently, are much better than perfect tests that are never written at all" -- Martin Fowler
+				</script></section> -->
+									</section><section  data-markdown ><script type="text/template">
+					## SAD TRUE
+					> "tests don't prove the absence of bugs!"
+				</script></section>
+				</section><section  data-markdown data-transition="slide-in fade-out" ><script type="text/template">
+					## TDD
+					<p>
+					<p class="fragment fade-up">requires you to really consider what do you want from the code</p>
+					<p class="fragment fade-up">It's faster and more robust than coding without tests once you've got the hang of it</p>
+					<p class="fragment fade-up">helps you to realise when to stop coding</p>
+					</p>
+				</script></section>
+				</section><section  data-markdown data-transition="fade-in slide-out" ><script type="text/template">
+					## TDD
+					<p>
+					<p class="fragment fade-up">tells you whether your last change (or refactoring) broke previously working code</p>
+					<p class="fragment fade-up">reduces time spent with the debugger </p>
+					<p class="fragment fade-up">forces the radical simplification of the code</p>
+					</p>
+				</script></section>
+<!-- 				</section><section  data-markdown><script type="text/template">
+					## What does "test driven" mean?
+					* Writing new code only while, when
+				</script></section> -->
+
+				</section><section  data-markdown><script type="text/template">
+					## TDD's mantra
+<!-- 					* Red
+					* Green
+					* Refactor -->
+					<img class="img-rgr" data-src="css/tddMantraRGR.png">
+				</script></section>
+<!-- 				</section><section  data-markdown><script type="text/template">
+					## WHY DO WE NEED TESTS?
+				</script></section> -->
+
+					<section  data-markdown data-transition="slide-in fade-out"><script type="text/template">
+					<img class="img-tdd-mantra"  data-src="css/tddMantraREDmini.png">
+```kotlin
+@Test
+fun testFibonacci() { 
+    assertEquals(0, fib(0))
+}
+```
+					
+					
+					</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+					<img class="img-tdd-mantra" data-src="css/tddMantraGREENmini.png">
+```kotlin
+@Test
+fun testFibonacci() {
+    assertEquals(0, fib(0))
+}
+```
+```kotlin
+fun fib(n: Int): Int{
+    return 0
+}
+```
+					</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+						<img class="img-tdd-mantra" data-src="css/tddMantraREDmini.png">
+```kotlin
+@Test
+fun testFibonacci() {
+	assertEquals(0, fib(0))
+	assertEquals(1, fib(1))
+}
+```
+```kotlin
+fun fib(n: Int): Int{
+    return 0
+}
+```
+					</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+						<img class="img-tdd-mantra" data-src="css/tddMantraGREENmini.png">
+```kotlin
+@Test
+fun testFibonacci() {
+	assertEquals(0, fib(0))
+	assertEquals(1, fib(1))
+}
+```
+```kotlin
+fun fib(n: Int): Int{
+     when(n){
+        0 -> return 0
+        else -> return 1
+    }
+}
+```
+					</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+						<img class="img-tdd-mantra" data-src="css/tddMantraGREENmini.png">
+```kotlin
+@Test
+fun testFibonacci() {
+	assertEquals(0, fib(0))
+	assertEquals(1, fib(1))
+	assertEquals(1, fib(2))
+}
+```
+```kotlin
+fun fib(n: Int): Int{
+     when(n){
+        0 -> return 0
+        else -> return 1
+    }
+}
+```
+
+					</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+						<img class="img-tdd-mantra" data-src="css/tddMantraREDmini.png">
+```kotlin
+@Test
+fun testFibonacci() {
+	assertEquals(0, fib(0))
+	assertEquals(1, fib(1))
+	assertEquals(1, fib(2))
+	assertEquals(2, fib(3))
+}
+```
+```kotlin
+fun fib(n: Int): Int{
+     when(n){
+        0 -> return 0
+        else -> return 1
+    }
+}
+```
+
+					</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+						<img class="img-tdd-mantra" data-src="css/tddMantraGREENmini.png">
+```kotlin
+@Test
+fun testFibonacci() {
+	assertEquals(0, fib(0))
+	assertEquals(1, fib(1))
+	assertEquals(1, fib(2))
+	assertEquals(2, fib(3))
+}
+```
+```kotlin
+fun fib(n: Int): Int{
+     when(n){
+         0 -> return 0
+         1, 2 -> return 1
+         else -> return 2
+    }
+}
+```
+
+					</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+						<img class="img-tdd-mantra" data-src="css/tddMantraREFACTORmini.png">
+```kotlin
+@Test
+fun testFibonacci() {
+	assertEquals(0, fib(0))
+	assertEquals(1, fib(1))
+	assertEquals(1, fib(2))
+	assertEquals(2, fib(3))
+}
+```
+```kotlin
+fun fib(n: Int): Int{
+     when(n){
+         0 -> return 0
+         1, 2 -> return 1
+         else -> return 1 + 1
+    }
+}
+```
+
+					</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+						<img class="img-tdd-mantra" data-src="css/tddMantraREFACTORmini.png">
+```kotlin
+@Test
+fun testFibonacci() {
+	assertEquals(0, fib(0))
+	assertEquals(1, fib(1))
+	assertEquals(1, fib(2))
+	assertEquals(2, fib(3))
+}
+```
+```kotlin
+fun fib(n: Int): Int{
+     when(n){
+         0 -> return 0
+         1, 2 -> return 1
+         else -> return fib(n-1) + 1
+    }
+}
+```
+
+					</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+						<img class="img-tdd-mantra" data-src="css/tddMantraREFACTORmini.png">
+```kotlin
+@Test
+fun testFibonacci() {
+	assertEquals(0, fib(0))
+	assertEquals(1, fib(1))
+	assertEquals(1, fib(2))
+	assertEquals(2, fib(3))
+}
+```
+```kotlin
+fun fib(n: Int): Int{
+     when(n){
+         0 -> return 0
+         1, 2 -> return 1
+         else -> return fib(n-1) + fib(n-2)
+    }
+}
+```
+
+					</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+						<img class="img-tdd-mantra" data-src="css/tddMantraREFACTORmini.png">
+```kotlin
+@Test
+fun testFibonacci() {
+    val cases= hashMapOf<Int,Int>(
+            0 to 0,
+            1 to 1,
+            2 to 1,
+            3 to 2
+    )
+    cases.forEach { input, solution ->
+        assertEquals(solution, fib(input))
+    }
+}
+```
+```kotlin
+fun fib(n: Int): Int{
+     when(n){
+         0 -> return 0
+         1, 2 -> return 1
+         else -> return fib(n-1) + fib(n-2)
+    }
+}
+```
+
+					</script></section>
+					</section><section  data-markdown><script type="text/template">
+					## TDD provides
+					* making changes in the code without fear
+					* executable code examples for other team members
+					* merciless refactoring - incredibly rewarding, try it!
+					* writing code in response to the requirements of the tests
+				</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+						## SOURCES
+						* "Test Driven Development: By Example" - Kent Beck
+						* https://stackoverflow.com/questions/67299/is-unit-testing-worth-the-effort
+						* https://dzone.com/articles/20-benefits-of-test-driven-development
+					</script></section>
+					<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+						## THE END
+					</script></section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
