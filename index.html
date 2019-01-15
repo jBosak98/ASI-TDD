@@ -14,48 +14,59 @@
 	</head>
 	<body>
 		<div class="reveal">
-			<header style="position: absolute;top: 50px; left: 100px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0)"></header>
+			<header style="position: absolute;top: 30px; left: 30px; z-index:500; font-size:100px;background-color: rgba(0,0,0,0)"></header>
 			<style>.header-red header:after { content: url(css/tddMantraRED.png); }</style>
 			<style>.header-green header:after { content: url(css/tddMantraGREEN.png); }</style>
 			<style>.header-refactor header:after { content: url(css/tddMantraREFACTOR.png); }</style>
 			<div class="slides">
+
 <section  data-markdown ><script type="text/template">
 # TEST DRIVEN DEVELOPMENT
 Jakub Bosak
 </script></section>
-<section  data-markdown ><script type="text/template">
 
+<section  data-markdown ><script type="text/template">
 ## UNIT TESTS
-* help you really understand the design of the code you are working on
 * give you instant visual feedback
 * can help document and define what something is supposed to do
 * help with code re-use
 </script></section>
-<!-- 				</section><section  data-markdown ><script type="text/template">
-					## WHAT SHOULD BE TESTED
-					*	conditional instructions
-					*	loops
-					*	operations
-					*	polymorphism
 
-				</script></section>
-				</section><section  data-markdown ><script type="text/template">
-					## WHAT SHOULD NOT BE TESTED
+<section>
 
-				</script></section> -->
-<!-- 				</section><section  data-markdown ><script type="text/template">
-					> "Imperfect tests, run frequently, are much better than perfect tests that are never written at all" -- Martin Fowler
-				</script></section> -->
-<!-- <section data-state="header1">
-<style>.header1 header:after { content: url(css/tddMantraREDmini.png); }</style>
+	<section  data-markdown><script type="text/template">
+	## TESTS SHOULD BE USED FOR
+	* Design aid 
+	* Feature documentation & test of developer understanding
+	* QA/Continuous Delivery
+	* Quality Assurance
 
- <img class="img-tdd-mantra" data-src="css/tddMantraREDmini.png"> 
+	</script></section>
+
+	<section  data-markdown><script type="text/template">
+	## Design aid 
+	Write a test during design phase, prior to implementation
+	</script></section>
+
+	<section  data-markdown><script type="text/template">
+	## Feature documentation  
+	Every test should provide a clear description of the feature being tested
+	</script></section>
+
+	<section  data-markdown><script type="text/template">
+	## QA/Continuous Delivery
+	The tests should halt the delivery pipeline on failure and produce a good bug report when they fail.
+	</script></section>
+
+
 </section>
- -->
-<section data-markdown ><script type="text/template">
-## SAD TRUE
-> "tests don't prove the absence of bugs!"
+
+<section  data-markdown ><script type="text/template">
+## ALL OF THIS IS ENSURED BY
+<h1 class="fragment fade-up"> TEST DRIVEN DEVELOPMENT </h1>
+
 </script></section>
+
 <section data-markdown data-transition="slide-in fade-out" ><script type="text/template">
 ## TDD
 <p>requires you to really consider what do you want from the code</p>
@@ -63,26 +74,24 @@ Jakub Bosak
 <p class="fragment fade-up">helps you to realise when to stop coding</p>
 </script></section>
 
-
-
 <section  data-markdown data-transition="fade-in slide-out" ><script type="text/template">
 ## TDD
 <p>tells you whether your last change (or refactoring) broke previously working code</p>
 <p class="fragment fade-up">reduces time spent with the debugger </p>
 <p class="fragment fade-up">forces the radical simplification of the code</p>
 </script></section>
-<!-- 				</section><section  data-markdown><script type="text/template">
-					## What does "test driven" mean?
-					* Writing new code only while, when
-				</script></section> -->
 
-</section><section  data-markdown><script type="text/template">
-## TDD's mantra
+<section  data-markdown ><script type="text/template">
+## Two rules of TDD
+<p class="fragment fade-up">Write a test that fails before even writing the code</p>
+<p class="fragment fade-up">Then, write no more code than is sufficient to pass the failing test</p>
+</script></section>
+
+<section  data-markdown><script type="text/template">
+## HOW TDD works
 <img class="img-rgr" data-src="css/tddMantraRGR.png">
 </script></section>
-<!-- 				</section><section  data-markdown><script type="text/template">
-					## WHY DO WE NEED TESTS?
-				</script></section> -->
+
 <section data-state="header-red" data-markdown data-transition="slide-in fade-out"><script type="text/template">
 ```kotlin
 @Test
@@ -91,6 +100,7 @@ fun testFibonacci() {
 }
 ```
 </script></section>
+
 <section data-state="header-green" data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ```kotlin
 @Test
@@ -104,6 +114,7 @@ fun fib(n: Int): Int{
 }
 ```
 </script></section>
+
 <section data-state="header-red" data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ```kotlin
 @Test
@@ -118,6 +129,7 @@ fun fib(n: Int): Int{
 }
 ```
 </script></section>
+
 <section data-state="header-green" data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ```kotlin
 @Test
@@ -135,6 +147,7 @@ fun fib(n: Int): Int{
 }
 ```
 </script></section>
+
 <section data-state="header-green" data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ```kotlin
 @Test
@@ -153,6 +166,7 @@ fun fib(n: Int): Int{
 }
 ```
 </script></section>
+
 <section data-state="header-red" data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ```kotlin
 @Test
@@ -172,6 +186,7 @@ fun fib(n: Int): Int{
 }
 ```
 </script></section>
+
 <section data-state="header-green" data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ```kotlin
 @Test
@@ -192,6 +207,7 @@ fun fib(n: Int): Int{
 }
 ```
 </script></section>
+
 <section data-state="header-refactor" data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ```kotlin
 @Test
@@ -212,6 +228,7 @@ fun fib(n: Int): Int{
 }
 ```
 </script></section>
+
 <section data-state="header-refactor" data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ```kotlin
 @Test
@@ -232,6 +249,7 @@ fun fib(n: Int): Int{
 }
 ```
 </script></section>
+
 <section data-state="header-refactor" data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ```kotlin
 @Test
@@ -252,6 +270,7 @@ fun fib(n: Int): Int{
 }
 ```
 </script></section>
+
 <section data-state="header-refactor" data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ```kotlin
 @Test
@@ -277,22 +296,36 @@ fun fib(n: Int): Int{
 }
 ```
 </script></section>
-</section><section  data-markdown><script type="text/template">
+
+
+<section  data-markdown><script type="text/template">
 ## TDD provides
 * making changes in the code without fear
 * executable code examples for other team members
 * merciless refactoring - incredibly rewarding, try it!
 * writing code in response to the requirements of the tests
 </script></section>
+
+<section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
+<h2> THAT'S ALL</h2>
+<h3>you're ready to write your first test</h3>
+<h3 class="fragment fade-up">but remember</h3>
+<blockquote class="fragment fade-up"> "tests don't prove the absence of bugs!"</blockquote>
+</script></section>
+
+
 <section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ## SOURCES
 * "Test Driven Development: By Example" - Kent Beck
 * https://stackoverflow.com/questions/67299/is-unit-testing-worth-the-effort
 * https://dzone.com/articles/20-benefits-of-test-driven-development
+* https://medium.com/javascript-scene/what-every-unit-test-needs-f6cd34d9836d
 </script></section>
+
 <section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
 ## THE END
 </script></section>
+
 		</div>
 		</div>
 
