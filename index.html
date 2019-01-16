@@ -28,9 +28,11 @@ Jakub Bosak
 
 <section  data-markdown ><script type="text/template">
 ## UNIT TESTS
-* give you instant visual feedback
-* can help document and define what something is supposed to do
-* help with code re-use
+<ul>
+	<li class="fragment highlight-current-blue">give you instant visual feedback</li>
+	<li class="fragment highlight-current-blue"> can help document and define what something is supposed to do</li>
+	<li class="fragment highlight-current-blue"> help with code re-use </li>
+</ul>
 </script></section>
 
 <section>
@@ -38,9 +40,8 @@ Jakub Bosak
 	<section  data-markdown><script type="text/template">
 	## TESTS SHOULD BE USED FOR
 	* Design aid 
-	* Feature documentation & test of developer understanding
+	* Feature documentation
 	* QA/Continuous Delivery
-	* Quality Assurance
 
 	</script></section>
 
@@ -282,8 +283,35 @@ fun testFibonacci() {
             2 to 1,
             3 to 2
     )
-    cases.forEach { input, solution ->
-        assertEquals(solution, fib(input))
+    cases.forEach { input, expectedValue ->
+        assertEquals(expectedValue, fib(input))
+    }
+}
+```
+```kotlin
+fun fib(n: Int): Int{
+     when(n){
+         0 -> return 0
+         1, 2 -> return 1
+         else -> return fib(n-1) + fib(n-2)
+    }
+}
+```
+</script></section>
+
+<section data-state="header-green" data-markdown data-transition="fade-in fade-out"><script type="text/template">
+```kotlin
+@Test
+fun testFibonacci() {
+    val cases= hashMapOf<Int,Int>(
+            0 to 0,
+            1 to 1,
+            2 to 1,
+            3 to 2,
+            10 to 55
+    )
+    cases.forEach { input, expectedValue ->
+        assertEquals(expectedValue, fib(input))
     }
 }
 ```
@@ -301,10 +329,19 @@ fun fib(n: Int): Int{
 
 <section  data-markdown><script type="text/template">
 ## TDD provides
-* making changes in the code without fear
-* executable code examples for other team members
-* merciless refactoring - incredibly rewarding, try it!
-* writing code in response to the requirements of the tests
+<ul>
+	<li class="fragment highlight-current-blue">
+		making changes in the code without fear
+	</li>
+	<li class="fragment highlight-current-blue">
+		executable code examples for other team members
+	</li>
+	<li class="fragment highlight-current-blue">
+		merciless refactoring
+	</li>
+	<li class="fragment highlight-current-blue">
+		writing code in response to the requirements of the tests
+	</li>
 </script></section>
 
 <section  data-markdown data-transition="fade-in fade-out"><script type="text/template">
